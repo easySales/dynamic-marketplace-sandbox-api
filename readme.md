@@ -1,6 +1,11 @@
-# Endpoints:
+# Project usage
 
-## getCategories <br>
+`npm install`<br>
+`npm run watch`
+
+# Dynamic Marketplace Endpoints:
+
+## GET CATEGORIES <br>
 
 **Example url:** <br>
 https://acme.com/categories?page=1&perPage=100<br>
@@ -19,6 +24,9 @@ https://acme.com/categories?page=1&perPage=100<br>
 
 **Response Body:** <br>
 
+<details>
+  <summary>View</summary>
+
 ```json
 {
   "errors": [],
@@ -35,8 +43,9 @@ https://acme.com/categories?page=1&perPage=100<br>
 }
 ```
 
-<br>
-**Notes:** <br>
+</details>
+
+**Notes:**<br>
 errors - should always return and array of errors (if present)<br>
 data - should always return and array of categories<br>
 pagination - should always return totalPages and currentPage properties<br>
@@ -87,6 +96,7 @@ https://acme.com/offer<br>
   ]
 }
 ```
+
 </details>
 
 
@@ -131,5 +141,6 @@ https://acme.com/offer<br>
   "offerId": "1-2-3"
 }
 ```
+
 </details>
 
