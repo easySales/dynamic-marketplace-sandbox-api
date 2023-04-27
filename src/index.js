@@ -8,7 +8,6 @@ const PORT = 30001
 
 //app.use(cors())
 
-
 app.use(express.json())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
@@ -24,6 +23,7 @@ app.post('/offers', ApiController.postOffers)
 app.post('/offers/stocks', ApiController.postOffersStocks)
 app.post('/offers/prices', ApiController.postOffersPrices)
 app.get('/orders', ApiController.getOrders)
+app.post('/orders', ApiController.postOrders)
 
 
 app.listen(PORT, () => {

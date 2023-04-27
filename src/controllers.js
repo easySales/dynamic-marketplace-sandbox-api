@@ -174,4 +174,19 @@ export default class ApiController {
             offers: offers,
         }).status(200);
     }
+
+    static async postOrders(req, res, next) {
+        let orders = [
+            {orderId: 1}
+        ]
+
+        res.json({
+            errors: [],
+            orders: orders,
+            pagination: {
+                totalPages: 10,
+                currentPage: parseInt(page)
+            }
+        }).status(200);
+    }
 }
