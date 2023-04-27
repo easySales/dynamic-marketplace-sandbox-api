@@ -2,6 +2,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
 import ApiController from "./controllers.js";
+
 const app = express()
 const PORT = 30001
 
@@ -19,7 +20,9 @@ app.get('/', (req, res) => {
 app.get('/categories', ApiController.getCategories)
 app.get('/characteristics', ApiController.getCharacteristics)
 app.get('/offers', ApiController.getOffers)
-app.post('/offer', ApiController.postOffer)
+app.post('/offers', ApiController.postOffers)
+app.post('/offers/stocks', ApiController.postOffersStocks)
+app.post('/offers/prices', ApiController.postOffersPrices)
 app.get('/orders', ApiController.getOrders)
 
 

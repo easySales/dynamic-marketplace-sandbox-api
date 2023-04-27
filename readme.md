@@ -322,3 +322,228 @@ orders - should always return and array of offers<br>
 pagination - should always return totalPages and currentPage properties<br>
 </details>
 
+### POST OFFERS <br>
+
+<details>
+  <summary>Example url</summary>
+
+`https://acme.com/offers`
+</details>
+
+<details>
+  <summary>Request Headers</summary>
+
+`Content-Type: application/json`<br>
+`Accept: application/json`<br>
+`Authorization: Basic USER_USERNAME:USER_PASSWORD`<br>
+</details>
+
+<details>
+  <summary>Request Body</summary>
+
+```json
+[
+  {
+    "name": "Offer name",
+    "description": "<p>Offer description</p>",
+    "categoryId": "3",
+    "sku": "offer-sku-1",
+    "ean": "2016723983597",
+    "images": [
+      "https://example.jpg"
+    ],
+    "brand": "Lee",
+    "status": 1,
+    "stock": 2,
+    "salePrice": 2318.12,
+    "fullPrice": 2318.12,
+    "characteristics": [
+      {
+        "id": "1",
+        "value": "red"
+      },
+      {
+        "id": "2",
+        "value": "SA"
+      },
+      {
+        "id": "3",
+        "value": "sasasa"
+      }
+    ],
+    "offerId": "1-2-3"
+  }
+]
+```
+
+</details>
+
+<details>
+  <summary>Response Headers</summary>
+
+`Content-Type: application/json`<br>
+</details>
+
+<details>
+  <summary>Response Body</summary>
+
+```json
+{
+  "errors": [],
+  "offers": [
+    {
+      "name": "Offer name",
+      "description": "<p>Offer description</p>",
+      "categoryId": "3",
+      "sku": "offer-sku-1",
+      "ean": "2016723983597",
+      "images": [
+        "https://example.jpg"
+      ],
+      "brand": "Lee",
+      "status": 1,
+      "stock": 2,
+      "salePrice": 2318.12,
+      "fullPrice": 2318.12,
+      "characteristics": [
+        {
+          "id": "1",
+          "value": "red"
+        },
+        {
+          "id": "2",
+          "value": "SA"
+        },
+        {
+          "id": "3",
+          "value": "sasasa"
+        }
+      ],
+      "offerId": "1-2-3"
+    }
+  ]
+}
+```
+
+</details>
+
+<details>
+  <summary>Notes</summary>
+
+errors - should always return and array of errors (if present)<br>
+offers - should always return and array of offers<br>
+pagination - should always return totalPages and currentPage properties<br>
+</details>
+
+### POST OFFERS STOCKS <br>
+
+<details>
+  <summary>Example url</summary>
+
+`https://acme.com/offers/stocks`
+</details>
+
+<details>
+  <summary>Request Headers</summary>
+
+`Content-Type: application/json`<br>
+`Accept: application/json`<br>
+`Authorization: Basic USER_USERNAME:USER_PASSWORD`<br>
+</details>
+
+<details>
+  <summary>Request Body</summary>
+
+```json
+[
+  {
+    "offerId": "1-2-3",
+    "stock": 10
+  }
+]
+```
+
+</details>
+
+<details>
+  <summary>Response Headers</summary>
+
+`Content-Type: application/json`<br>
+</details>
+
+<details>
+  <summary>Response Body</summary>
+
+```json
+{
+  "errors": [],
+  "offers": []
+}
+```
+
+</details>
+
+<details>
+  <summary>Notes</summary>
+
+errors - should always return and array of errors (if present)<br>
+offers - should always return and array of offers<br>
+pagination - should always return totalPages and currentPage properties<br>
+</details>
+
+### POST OFFERS PRICES <br>
+
+<details>
+  <summary>Example url</summary>
+
+`https://acme.com/offers/prices`
+</details>
+
+<details>
+  <summary>Request Headers</summary>
+
+`Content-Type: application/json`<br>
+`Accept: application/json`<br>
+`Authorization: Basic USER_USERNAME:USER_PASSWORD`<br>
+</details>
+
+<details>
+  <summary>Request Body</summary>
+
+```json
+[
+  {
+    "offerId": "1-2-3",
+    "salePrice": 10,
+    "fullPrice": 10
+  }
+]
+```
+
+</details>
+
+<details>
+  <summary>Response Headers</summary>
+
+`Content-Type: application/json`<br>
+</details>
+
+<details>
+  <summary>Response Body</summary>
+
+```json
+{
+  "errors": [],
+  "offers": []
+}
+```
+
+</details>
+
+<details>
+  <summary>Notes</summary>
+
+errors - should always return and array of errors (if present)<br>
+offers - should always return and array of offers<br>
+pagination - should always return totalPages and currentPage properties<br>
+</details>

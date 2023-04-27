@@ -1,5 +1,5 @@
 export default class ApiController {
-    static getCategories(req, res, next) {
+    static async getCategories(req, res, next) {
         const {page, perPage} = req.query
 
         const categories = [
@@ -23,7 +23,7 @@ export default class ApiController {
 
         res.json({
             errors: [],
-            data: categories,
+            categories: categories,
             pagination: {
                 totalPages: 10,
                 currentPage: parseInt(page)
@@ -40,6 +40,7 @@ export default class ApiController {
                 name: 'Color',
                 isMandatory: true,
                 isRestrictive: true,
+                isDeleted: false,
                 values: [
                     {
                         value: 'red',
@@ -56,6 +57,7 @@ export default class ApiController {
                 name: 'Type',
                 isMandatory: true,
                 isRestrictive: true,
+                isDeleted: false,
                 values: [
                     {
                         value: 'big',
@@ -72,13 +74,22 @@ export default class ApiController {
                 name: 'ConditionNote',
                 isMandatory: false,
                 isRestrictive: false,
+                isDeleted: false,
+                values: []
+            },
+            {
+                marketplaceId: 4,
+                name: 'ConditionNoteTest',
+                isMandatory: false,
+                isRestrictive: false,
+                isDeleted: true,
                 values: []
             }
         ];
 
         res.json({
             errors: [],
-            data: characteristics,
+            characteristics: characteristics,
             pagination: {
                 totalPages: 10,
                 currentPage: parseInt(page)
@@ -91,21 +102,35 @@ export default class ApiController {
             {offer_id: 1}
         ]
 
-        res.json(offers);
+        res.json({
+            errors: [],
+            offers: offers,
+            pagination: {
+                totalPages: 10,
+                currentPage: parseInt(page)
+            }
+        }).status(200);
     }
 
     static async getOrders(req, res, next) {
         let orders = [
-            {order_id: 1}
+            {orderId: 1}
         ]
 
-        res.json(orders, 200);
+        res.json({
+            errors: [],
+            orders: orders,
+            pagination: {
+                totalPages: 10,
+                currentPage: parseInt(page)
+            }
+        }).status(200);
     }
 
-    static async postOffer(req, res, next){
+    static async postOffers(req, res, next) {
         const {page, perPage, categoryId} = req.query
 
-        const offer = {
+        const offers = {
             ...req.body,
             offerId: '1-2-3'
         }
@@ -114,8 +139,39 @@ export default class ApiController {
 
         res.json({
             errors: [],
-            data: offer,
+            offers: offers,
         }).status(200);
     }
 
+    static async postOffersStocks(req, res, next) {
+        const {page, perPage, categoryId} = req.query
+
+        const offers = {
+            ...req.body,
+            offerId: '1-2-3'
+        }
+
+        console.log(JSON.stringify(offer))
+
+        res.json({
+            errors: [],
+            offers: offers,
+        }).status(200);
+    }
+
+    static async postOffersPrices(req, res, next) {
+        const {page, perPage, categoryId} = req.query
+
+        const offers = {
+            ...req.body,
+            offerId: '1-2-3'
+        }
+
+        console.log(JSON.stringify(offer))
+
+        res.json({
+            errors: [],
+            offers: offers,
+        }).status(200);
+    }
 }
