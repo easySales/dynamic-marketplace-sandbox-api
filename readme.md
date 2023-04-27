@@ -1,9 +1,9 @@
-# Project usage
+## Project usage
 
 `npm install`<br>
 `npm run watch`
 
-# Dynamic Marketplace Endpoints:
+## Documentation:
 
 ### GET CATEGORIES <br>
 
@@ -254,43 +254,43 @@ pagination - should always return totalPages and currentPage properties<br>
     {
       "orderId": "1-2-3",
       "status": 1,
-      "payment_method": "1",
+      "paymentMethod": "1",
       "customer": {
-        "is_company": true,
-        "company_identifier": "12345",
-        "company_name": "Acme",
-        "registration_number": "12344",
+        "isCompany": true,
+        "companyIdentifier": "12345",
+        "companyName": "Acme",
+        "registrationNumber": "12344",
         "phone": "7412332145",
         "name": "John Doe",
-        "identification_number": "12345",
+        "identificationNumber": "12345",
         "email": "john@doe.com",
         "bank": "12345",
         "iban": "12345",
         "fax": "12345"
       },
-      "billing_address": {
+      "billingAddress": {
         "name": "John Doe",
         "phone": "7412332145",
         "country": "RO",
         "region": "Ilfov",
         "city": "Bucuresti",
         "street": "str. Unirii 1",
-        "postal_code": "10001"
+        "postalCode": "10001"
       },
-      "shipping_address": {
+      "shippingAddress": {
         "name": "John Doe",
         "phone": "7412332145",
         "country": "RO",
         "region": "Ilfov",
         "city": "Bucuresti",
         "street": "str. Unirii 1",
-        "postal_code": "10001"
+        "postalCode": "10001"
       },
       "vouchers": [
         {
           "name": "Global discount",
-          "price_with_tax": 119,
-          "price_without_tax": 100,
+          "price": 119,
+          "priceWithTax": 100,
           "tax": 19
         }
       ],
@@ -300,7 +300,7 @@ pagination - should always return totalPages and currentPage properties<br>
           "price": 100,
           "quantity": 3,
           "tax": 19,
-          "offer_id": "1-2-3"
+          "offerId": "1-2-3"
         }
       ]
     }
