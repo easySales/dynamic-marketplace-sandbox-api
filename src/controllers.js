@@ -1,34 +1,34 @@
-export default class ApiController {
+class ApiController {
     static async getCategories(req, res, next) {
         const {page, perPage} = req.query
 
         const categories = [
             {
-                marketplaceId: 1,
+                categoryId: 1,
                 name: 'Automotive'
             },
             {
-                marketplaceId: 2,
+                categoryId: 2,
                 name: 'Phones'
             },
             {
-                marketplaceId: 3,
+                categoryId: 3,
                 name: 'Software'
             },
             {
-                marketplaceId: 4,
+                categoryId: 4,
                 name: 'Others'
             }
         ]
 
-        res.json({
+        res.status(200).json({
             errors: [],
             categories: categories,
             pagination: {
-                totalPages: 10,
-                currentPage: parseInt(page)
+                totalPages: 1,
+                currentPage: 1
             }
-        }).status(200);
+        });
     }
 
     static async getCharacteristics(req, res, next) {
@@ -36,7 +36,7 @@ export default class ApiController {
 
         const characteristics = [
             {
-                marketplaceId: 1,
+                characteristicId: 1,
                 name: 'Color',
                 isMandatory: true,
                 isRestrictive: true,
@@ -53,7 +53,7 @@ export default class ApiController {
                 ]
             },
             {
-                marketplaceId: 2,
+                characteristicId: 2,
                 name: 'Type',
                 isMandatory: true,
                 isRestrictive: true,
@@ -70,7 +70,7 @@ export default class ApiController {
                 ]
             },
             {
-                marketplaceId: 3,
+                characteristicId: 3,
                 name: 'ConditionNote',
                 isMandatory: false,
                 isRestrictive: false,
@@ -78,7 +78,7 @@ export default class ApiController {
                 values: []
             },
             {
-                marketplaceId: 4,
+                characteristicId: 4,
                 name: 'ConditionNoteTest',
                 isMandatory: false,
                 isRestrictive: false,
@@ -87,106 +87,245 @@ export default class ApiController {
             }
         ];
 
-        res.json({
+        res.status(200).json({
             errors: [],
             characteristics: characteristics,
             pagination: {
-                totalPages: 10,
-                currentPage: parseInt(page)
+                totalPages: 1,
+                currentPage: 1
             }
-        }).status(200);
+        });
     }
 
     static async getOffers(req, res, next) {
         let offers = [
-            {offer_id: 1}
+            {
+                name: 'Offer example name',
+                description: '<p>Offer example description</p>',
+                categoryId: '4',
+                sku: 'offer-example-sku',
+                ean: '2016723983597',
+                url: 'https://example.com/offer-example-id',
+                images: [
+                    'https://easysales1.fra1.digitaloceanspaces.com/uploads/1/1672398315-wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg'
+                ],
+                url: 'https://example.com/offer-example-id',
+                brand: 'Lee',
+                status: 1,
+                stock: 100,
+                salePrice: 10,
+                fullPrice: 20,
+                characteristics: [{id: '1', value: 'red'}, {id: '2', value: 'SecondType'}],
+                offerId: 'offer-example-id'
+            }
         ]
 
-        res.json({
+        res.status(200).json({
             errors: [],
             offers: offers,
             pagination: {
-                totalPages: 10,
-                currentPage: parseInt(page)
+                totalPages: 1,
+                currentPage: 1
             }
-        }).status(200);
+        });
     }
 
     static async getOrders(req, res, next) {
         let orders = [
-            {orderId: 1}
+            {
+                "orderId": "1",
+                "orderCode": "display-order-code",
+                "status": 1,
+                "paymentMethod": "1",
+                "orderDate": "2023-05-08",
+                "customer": {
+                    "isCompany": true,
+                    "companyIdentifier": "12345",
+                    "companyName": "Acme",
+                    "registrationNumber": "12344",
+                    "phone": "0726704393",
+                    "name": "John Doe",
+                    "identificationNumber": "12345",
+                    "email": "john@doe.com",
+                    "bank": "12345",
+                    "iban": "12345",
+                    "fax": "12345"
+                },
+                "billingAddress": {
+                    "name": "John Doe",
+                    "phone": "0726704393",
+                    "country": "RO",
+                    "region": "B",
+                    "city": "Bucuresti",
+                    "address": "str. Unirii 1",
+                    "postalCode": "10001"
+                },
+                "shippingAddress": {
+                    "name": "John Doe",
+                    "phone": "7412332145",
+                    "country": "RO",
+                    "region": "B",
+                    "city": "Bucuresti",
+                    "address": "str. Unirii 1",
+                    "postalCode": "10001"
+                },
+                "vouchers": [
+                    {
+                        "name": "Global discount",
+                        "price": 119,
+                        "priceWithTax": 100,
+                        "tax": 19
+                    }
+                ],
+                "products": [
+                    {
+                        "name": "Offer example ame",
+                        "price": 100,
+                        "quantity": 3,
+                        "tax": 19,
+                        "offerId": "offer-example-id"
+                    }
+                ]
+            }
         ]
 
-        res.json({
+        res.status(200).json({
             errors: [],
             orders: orders,
             pagination: {
-                totalPages: 10,
-                currentPage: parseInt(page)
+                totalPages: 1,
+                currentPage: 1
             }
-        }).status(200);
+        });
     }
 
     static async postOffers(req, res, next) {
         const {page, perPage, categoryId} = req.query
 
-        const offers = {
-            ...req.body,
-            offerId: '1-2-3'
-        }
+        const offers = [
+            {
+                name: 'Offer example name',
+                description: '<p>Offer example description</p>',
+                categoryId: '4',
+                sku: 'offer-example-sku',
+                ean: '2016723983597',
+                images: [
+                    'https://easysales1.fra1.digitaloceanspaces.com/uploads/1/1672398315-wtqqnkYDYi2ifsWZVW2MT4-1200-80.jpg'
+                ],
+                url: "https://example.com/offer-example-id",
+                brand: 'Lee',
+                status: 0,
+                stock: 100,
+                salePrice: 10,
+                fullPrice: 20,
+                characteristics: [{id: '1', value: 'red'}, {id: '2', value: 'SecondType'}],
+                offerId: 'offer-example-id'
+            }
+        ]
 
-        console.log(JSON.stringify(offer))
-
-        res.json({
+        res.status(200).json({
             errors: [],
             offers: offers,
-        }).status(200);
+        });
+
+        /*res.status(422).json({
+            errors: [
+                {
+                    sku: 'offer-example-sku',
+                    messages: [
+                        'Unable to upate offer, invalid name',
+                    ]
+                }
+            ],
+            offers: [],
+        });*/
     }
 
     static async postOffersStocks(req, res, next) {
-        const {page, perPage, categoryId} = req.query
-
-        const offers = {
-            ...req.body,
-            offerId: '1-2-3'
-        }
-
-        console.log(JSON.stringify(offer))
-
-        res.json({
+        res.status(200).json({
             errors: [],
-            offers: offers,
-        }).status(200);
+            offers: req.body,
+        });
+
+        /*res.status(422).json({
+            errors: [
+                {
+                    "offerId": "offer-example-id-2",
+                    "messages": [
+                        "Unable to create offer, invalid name"
+                    ]
+                }
+            ],
+            offers: [],
+        });*/
     }
 
     static async postOffersPrices(req, res, next) {
-        const {page, perPage, categoryId} = req.query
-
         const offers = {
             ...req.body,
             offerId: '1-2-3'
         }
 
-        console.log(JSON.stringify(offer))
-
-        res.json({
+        /*res.status(200).json({
             errors: [],
-            offers: offers,
-        }).status(200);
+            offers: [offers],
+        });*/
+
+        res.status(422).json({
+            errors: [
+                {
+                    offerId: '1-2-3',
+                    messages: [
+                        'Unable to upate offer price'
+                    ]
+                }
+            ],
+            offers: [],
+        });
     }
 
-    static async postOrders(req, res, next) {
+    static async postOrdersStatus(req, res, next) {
         let orders = [
             {orderId: 1}
         ]
 
-        res.json({
+        res.status(200).json({
             errors: [],
-            orders: orders,
-            pagination: {
-                totalPages: 10,
-                currentPage: parseInt(page)
+            orders: orders
+        });
+    }
+
+    static async postOrdersAttachAWB(req, res, next) {
+        let orders = [
+            {
+                orderId: 1,
+                messages: [
+                    'Success.'
+                ]
             }
-        }).status(200);
+        ]
+
+        res.status(200).json({
+            errors: [],
+            orders: orders
+        });
+    }
+
+    static async postOrdersAttachInvoice(req, res, next) {
+        let orders = [
+            {
+                orderId: 1,
+                messages: [
+                    'Success.'
+                ]
+            }
+        ]
+
+        res.status(200).json({
+            errors: [],
+            orders: orders
+        });
     }
 }
+
+module.exports = ApiController

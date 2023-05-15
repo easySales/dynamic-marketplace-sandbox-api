@@ -1,7 +1,7 @@
-import express from 'express'
-import bodyParser from 'body-parser'
-import cors from 'cors'
-import ApiController from "./controllers.js";
+const express = require('express')
+const bodyParser = require('body-parser')
+const cors = require('cors')
+const ApiController = require('./controllers.js')
 
 const app = express()
 const PORT = 30001
@@ -23,7 +23,10 @@ app.post('/offers', ApiController.postOffers)
 app.post('/offers/stocks', ApiController.postOffersStocks)
 app.post('/offers/prices', ApiController.postOffersPrices)
 app.get('/orders', ApiController.getOrders)
-app.post('/orders', ApiController.postOrders)
+app.post('/orders/status', ApiController.postOrdersStatus)
+app.post('/orders/attach-awb', ApiController.postOrdersAttachAWB)
+app.post('/orders/attach-invoice', ApiController.postOrdersAttachInvoice)
+app.post('/orders/attach-reverse-invoice', ApiController.postOrdersAttachInvoice)
 
 
 app.listen(PORT, () => {

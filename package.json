@@ -2,8 +2,7 @@
   "name": "easysales-dynamic-marketplace-sandbox-api",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
-  "main": "src/index.js",
+  "main": "./src/index.js",
   "scripts": {
     "watch": "nodemon ./src/index.js"
   },
