@@ -1,4 +1,4 @@
-### Install and Usage
+##easySales dynamic marketplace api sandbox
+
 `npm install`<br>
 `npm run watch`<br>
-`ngrok http 30001`
